@@ -8,8 +8,12 @@ window.onload = function(){
     const mainContentEl = document.querySelector('.main-content');
     const sectionEls = mainContentEl.querySelectorAll('.section');
     const containerEl = document.querySelector('.container');
+    const infoTextEl = document.querySelectorAll('.info--text');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    const sliderEls = document.querySelectorAll('.slider');
     let nowIndex = 0;
-    
+    let nowSlideIndex = 0;
     /* Click Event start */
     const openNav = () => {
         perspectiveEl.classList.add('effect-rotate');
@@ -61,6 +65,32 @@ window.onload = function(){
         else
             return false;
     }
+    const fadeBack = () => {
+        ++nowSlideIndex;
+        if(nowSlideIndex>2)
+            nowSlideIndex = 0;
+        const position = ['left','center','right'];
+        sliderEls.forEach((slide,idx)=>{
+            let index = nowSlideIndex+idx;
+            if(index>2)
+                index -= 3;
+            slide.classList.remove(slide.classList[1]);
+            slide.classList.add(position[index]);
+        })
+    }
+    const fadeFront = () => {
+        ++nowSlideIndex;
+        if(nowSlideIndex>2)
+            nowSlideIndex = 0;
+        const position = ['left','right','center'];
+        sliderEls.forEach((slide,idx)=>{
+            let index = nowSlideIndex+idx;
+            if(index>2)
+                index -= 3;
+            slide.classList.remove(slide.classList[1]);
+            slide.classList.add(position[index]);
+        })
+    }
     const toggleSlide = () =>{
         slideLiEls.forEach((value,idx)=>{
             value.classList.remove('slide-active');
@@ -82,9 +112,19 @@ window.onload = function(){
                 value.classList.add('is-select');
         })
     }
+    const toggleInfoValue = (e)=> {
+        if(e.target.value !== '')
+            e.target.classList.add('has-value');
+        else
+            e.target.classList.remove('has-value');
+    };
+
     navButton.addEventListener('click', openNav);
     outNav.addEventListener('click',changeNav);
     containerEl.addEventListener('click',changeViewPort);
     slideUlEl.addEventListener('click',changeSlide);
+    prevBtn.addEventListener('click',fadeBack);
+    nextBtn.addEventListener('click',fadeFront);
     /* Click Event end */
+    infoTextEl.forEach(input=>{input.addEventListener('blur', toggleInfoValue);})
 }

@@ -5,6 +5,9 @@ a{
     text-decoration: none;
     color: #ffffff;
 }
+i{
+    user-select: none;
+}
 body{
     background-color: #000000;
 }
@@ -306,9 +309,6 @@ body{
 /* out-nav end */
 
 /* effect-rotate-left start*/
-.perspective.effect-rotate{
-    perspective: 1500px;
-}
 .effect-rotate .container{
     position: relative;
     left: 20%;
@@ -318,13 +318,371 @@ body{
 }
 /* effect-rotate-left end*/
 
+/* work start */
+.work{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 960px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+.work > h2{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+}
+.work > div{
+    position: relative;
+    width: 100%;
+}
+.work-slider{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+.slider{
+    text-align: center;
+    width: 150px;
+}
+.slider.center{
+    width: 300px;
+    order: 2;
+}
+.slider.left{
+    order: 1;
+}
+.slider.right{
+    order: 3;
+}
+.slider.left .slider--title, 
+.slider.right .slider--title{
+    color: #858585;
+    font-size: 14px;
+}
+.slider.left .slider--description, 
+.slider.right .slider--description{
+    display: none;
+}
+.slider--description{
+    font-size: 14px;
+    max-width: 260px;
+    margin: 0 auto;
+}
+.slider a{
+    display: block;
+    font-weight: bold;
+}
+.slider a img{
+    width: 100%;
+}
+.slider a .slider--title{
+    margin: 15px 0 10px;
+}
+.slider.center a .slider--title{
+    margin: 25px 0 15px;
+}
+.work .btn{
+    position: absolute;
+    width: 53px;
+    height: 53px;
+    top: 45%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.btn.prev{
+    left: 0;
+    background: url(images/prev_btn.png) no-repeat;
+}
+.btn.next{
+    right: 0;
+    background: url(images/next_btn.png) no-repeat;
+}
+/* work end */
+
+/* about start */
+.about{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 900px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+.about--banner{
+    position: relative;
+    width: 100%;
+    height: 475px;
+}
+.about--banner h2{
+    position: relative;
+    margin: 50px 0;
+    color: #ffffff;
+    font-size: 68px;
+    font-weight: bold;
+}
+.about--banner h2::before{
+    content: "";
+    position: absolute;
+    top: 67px;
+    left: 112px;
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    background: blue;
+}
+.about--banner h2::after{
+    content: "";
+    position: absolute;
+    left: 252px;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    background: blue;
+}
+.about--banner a{
+    display: inline-flex;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.about--banner a i{
+    margin-left: 10px;
+    transition: all 0.3s;
+}
+.about--banner a:hover i{
+    margin-left: 20px;
+}
+.about--banner img{
+    position: absolute;
+    right: 0;
+    bottom: -55px;
+}
+.about--option{
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+.about--option a{
+    position: relative;
+    display: block;
+    align-items: flex-end;
+    width: 175px;
+    height: 95px;
+    border: 10px solid blue;
+    box-sizing: border-box;
+}
+.about--option a:nth-child(1){
+    background: url(images/about-winners.png) no-repeat;
+    background-size: cover;
+}
+.about--option a:nth-child(2){
+    background: url(images/about-philosophy.png) no-repeat;
+    background-size: cover;
+}
+.about--option a:nth-child(3){
+    background: url(images/about-history.png) no-repeat;
+    background-size: cover;
+}
+.about--option a h3{
+    position: absolute;
+    bottom: -18px;
+    left: 18px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.15s ease-out;
+}
+.about--option a:hover h3{
+    bottom: -30px;
+}
+/* about end */
+
+/* contact start */
+.contact{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(images/contact-visual.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.contact--inner{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+.contact--info{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 45px;
+    color: #ffffff;
+    font-weight: bold;
+    background: #000000;
+}
+.contact--info p{
+    margin-bottom: 15px;
+}
+.contact--info > a{
+    margin-bottom: 15px;
+}
+.contact--info ul{
+    display: flex;
+    flex-direction: column;
+    height: 130px;
+    justify-content: space-between;
+}
+.contact--sns a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 105px;
+    width: 100%;
+    padding: 10px;
+}
+.contact--sns:nth-child(1) a{
+    background: rgb(5, 55, 190);
+}
+.contact--sns:nth-child(2) a{
+    background: rgb(116, 5, 190);
+}
+.contact--sns:nth-child(3) a{
+    background: rgb(190, 23, 23);
+}
+/* contact end */
+
+/* hire start */
+.hire{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+.hire h2{
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.hire--inner{
+    width: 100%;
+}
+.hire--inner input[type="checkbox"]{
+    display: none;
+}
+.hire--inner span{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.hire--inner span.hire--optionB{
+    width: 504px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+.hire--inner span label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    margin-bottom: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.hire--inner input[type="checkbox"]:checked + label{
+    background: #0e34b3;
+}
+.hire--info{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 60px;
+}
+.hire--info > div{
+    position: relative;
+    width: 45%;
+    height: 50px;
+    color: #ffffff;
+    font-size: 30px;
+}
+.hire--info > div input[type="text"]{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+.hire--info > div label{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: all 0.3s;
+}
+.hire--info > div input[type="text"]:focus + label{
+    font-size: 13px;
+    bottom: 50px;
+}
+.hire--info > div input[type="text"].has-value + label{
+    font-size: 13px;
+    bottom: 50px;
+}
+input[type="submit"]{
+    display: block;
+    max-width: 400px;
+    width: 100%;
+    height: 52px;
+    margin: 0 auto;
+    background: #0e34b3;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+/* hire end */
+
 /* Responsive */
 @media (max-width:1180px){
     .slide-nav{
         display: none;
     }
+
     .intro{
         max-width: 100%;
+    }
+
+    .contact--inner{
+        justify-content: center;
     }
 }
 @media (max-width:900px){
@@ -338,6 +696,12 @@ body{
     .intro--banner img{
         width: 430px;
     }
+    .slider{
+        width: 120px;
+    }
+    .slider.center{
+        width: 200px;
+    }
 }
 @media (max-width:840px){
     .intro--option{
@@ -346,6 +710,19 @@ body{
     .intro--option a{
         display: block;
         max-width: 100%;
+    }
+
+    .about--banner h2{
+        font-size: 45px;
+    }
+    .about--banner h2::before{
+        top: 45px;
+        left: 74px;
+        width: 12px;
+        height: 12px;
+    }
+    .about--banner h2::after{
+        left: 165px;
     }
 }
 @media (max-width:756px){
@@ -358,9 +735,47 @@ body{
     .intro--banner img{
         width: 330px;
     }
+
+    .hire--inner > div{
+        display: flex;
+    }
+    .hire--inner span{
+        display: block;
+    }
+    .hire--inner span.hire--optionB{
+        width: 100%;
+    }
+    .hire--inner span label{
+        margin: 0 auto 40px;
+        width: 90%;
+    }
 }
 @media (max-width:650px){
+    .effect-rotate{
+        perspective: none;
+    }
+    .effect-rotate .container{
+        display: none;
+    }
+    .out-nav.is-vis{
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
     .intro--banner img{
+        display: none;
+    }
+    .work-slider{
+        justify-content: center;
+    }
+    .slider.left,.slider.right{
+        display: none;
+    }
+
+    .about--banner img{
+        display: none;
+    }
+    .about--option{
         display: none;
     }
 }
