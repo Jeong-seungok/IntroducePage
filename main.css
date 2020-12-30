@@ -34,6 +34,9 @@ body{
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
 }
+button{
+    font-family: 'Montserrat', sans-serif;
+}
 
 /* header start*/
 .wrapper header{
@@ -47,15 +50,15 @@ body{
     right: 0;
     z-index: 101;
 }
-.wrapper header .logo{
+header .logo{
     display: flex;
     align-items: center;
 }
-.wrapper header .logo p{
+header .logo p{
     margin-left: 10px;
     font-weight: bold;
 }
-.wrapper header .nav_button{
+header .nav_button{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,22 +67,41 @@ body{
     height: 50px;
     cursor: pointer;
 }
-.wrapper header .nav_button span,
-.wrapper header .nav_button::before,
-.wrapper header .nav_button::after{
+header .nav_button span,
+header .nav_button::before,
+header .nav_button::after{
     content: "";
     position: relative;
     width: 16px;
     height: 2px;
     background-color: #ffffff;
 }
-.wrapper header .nav_button::before{
+header .nav_button::before{
     width: 23px;
     bottom: 5px;
 }
-.wrapper header .nav_button::after{
+header .nav_button::after{
     width: 23px;
     top: 5px;
+}
+header .hireus-btn{
+    position: absolute;
+    border: none;
+    background: #0e34b3;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 25px;
+    text-transform: uppercase;
+    visibility: hidden;
+    opacity: 0;
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+}
+header .hireus-btn.isActive{
+    visibility: visible;
+    opacity: 1;
 }
 /* header end*/
 
@@ -347,6 +369,7 @@ body{
     justify-content: space-between;
     align-items: center;
     width: 80%;
+    height: 390px;
     margin: 0 auto;
 }
 .slider{
@@ -695,6 +718,10 @@ input[type="submit"]{
     }
     .intro--banner img{
         width: 430px;
+    }
+
+    .work-slider{
+        height: auto;
     }
     .slider{
         width: 120px;

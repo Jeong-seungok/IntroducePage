@@ -13,7 +13,7 @@ window.onload = function(){
     const nextBtn = document.querySelector('.next');
     const sliderEls = document.querySelectorAll('.slider');
     let nowIndex = 0;
-    let nowSlideIndex = 0;
+
     /* Click Event start */
     const openNav = () => {
         perspectiveEl.classList.add('effect-rotate');
@@ -65,30 +65,21 @@ window.onload = function(){
         else
             return false;
     }
+    const directionClassName = ['left','center','right'];
     const fadeBack = () => {
-        ++nowSlideIndex;
-        if(nowSlideIndex>2)
-            nowSlideIndex = 0;
-        const position = ['left','center','right'];
-        sliderEls.forEach((slide,idx)=>{
-            let index = nowSlideIndex+idx;
-            if(index>2)
-                index -= 3;
-            slide.classList.remove(slide.classList[1]);
-            slide.classList.add(position[index]);
+        const popDirection = directionClassName.shift();
+        directionClassName.push(popDirection);
+        sliderEls.forEach((el,idx)=>{
+            el.classList.remove(el.classList[1]);
+            el.classList.add(directionClassName[idx]);
         })
     }
     const fadeFront = () => {
-        ++nowSlideIndex;
-        if(nowSlideIndex>2)
-            nowSlideIndex = 0;
-        const position = ['left','right','center'];
-        sliderEls.forEach((slide,idx)=>{
-            let index = nowSlideIndex+idx;
-            if(index>2)
-                index -= 3;
-            slide.classList.remove(slide.classList[1]);
-            slide.classList.add(position[index]);
+        const popDirection = directionClassName.pop();
+        directionClassName.unshift(popDirection);
+        sliderEls.forEach((el,idx)=>{
+            el.classList.remove(el.classList[1]);
+            el.classList.add(directionClassName[idx]);
         })
     }
     const toggleSlide = () =>{
