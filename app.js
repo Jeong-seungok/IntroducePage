@@ -12,7 +12,10 @@ window.onload = function(){
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
     const sliderEls = document.querySelectorAll('.slider');
+<<<<<<< HEAD
     const hireusBtn = document.querySelector('.hireus-btn');
+=======
+>>>>>>> 6541670358a86980d2a8bb6ef3c6edc3c3b1272b
     let nowIndex = 0;
 
     /* Click Event start */
@@ -74,6 +77,7 @@ window.onload = function(){
         else
             return false;
     }
+<<<<<<< HEAD
     const changeToHire = (e) => {
         nowIndex = 4;
         slideLiEls.forEach((value,idx)=>{
@@ -86,6 +90,8 @@ window.onload = function(){
             }
         })
     }
+=======
+>>>>>>> 6541670358a86980d2a8bb6ef3c6edc3c3b1272b
     const directionClassName = ['left','center','right'];
     const fadeBack = () => {
         const popDirection = directionClassName.shift();
@@ -137,6 +143,7 @@ window.onload = function(){
     slideUlEl.addEventListener('click',changeSlide);
     prevBtn.addEventListener('click',fadeBack);
     nextBtn.addEventListener('click',fadeFront);
+<<<<<<< HEAD
     hireusBtn.addEventListener('click',changeToHire);
     /* Click Event end */
     infoTextEl.forEach(input=>{input.addEventListener('blur', toggleInfoValue);})
@@ -159,4 +166,8 @@ window.onload = function(){
             toggleOutNav();
         }
     })
+=======
+    /* Click Event end */
+    infoTextEl.forEach(input=>{input.addEventListener('blur', toggleInfoValue);})
+>>>>>>> 6541670358a86980d2a8bb6ef3c6edc3c3b1272b
 }

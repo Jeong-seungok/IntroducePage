@@ -100,7 +100,10 @@ header .hireus-btn{
     cursor: pointer;
     left: 50%;
     transform: translateX(-50%);
+<<<<<<< HEAD
     transition: all 0.3s;
+=======
+>>>>>>> 6541670358a86980d2a8bb6ef3c6edc3c3b1272b
 }
 header .hireus-btn.isActive{
     visibility: visible;
@@ -786,11 +789,14 @@ input[type="submit"]{
     }
 }
 @media (max-width:650px){
+<<<<<<< HEAD
     header .hireus-btn.isActive{
         visibility: hidden;
         opacity: 0;
     }
 
+=======
+>>>>>>> 6541670358a86980d2a8bb6ef3c6edc3c3b1272b
     .effect-rotate{
         perspective: none;
     }
