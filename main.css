@@ -937,6 +937,7 @@ input[type="submit"]{
     .perspective{
         opacity: 1;
         transition: all 0.5s;
+        overflow: scroll;
     }
 
     header .more-btn.isActive{
