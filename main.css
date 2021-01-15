@@ -968,6 +968,10 @@ input[type="submit"]{
         display: none;
     }
 
+
+    .about{
+        margin-top: 10%;
+    }
     .about--banner{
         height: auto;
     }

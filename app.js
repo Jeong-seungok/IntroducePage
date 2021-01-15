@@ -17,7 +17,7 @@ window.onload = function(){
     contactEl = document.querySelector('.contact'),
     contactInnerEl = contactEl.querySelector('.contact--inner'),
     contactInfoEl = contactInnerEl.querySelector('.contact--info');
-    let nowIndex = 0;
+    let nowIndex = 0; 
     
     /* Click Event start */
     const openNav = () => {
