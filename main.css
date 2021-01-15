@@ -1,5 +1,6 @@
 /* FONT */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 /* COMMON */
 a{
     text-decoration: none;
@@ -9,12 +10,12 @@ i{
     user-select: none;
 }
 body{
-    background-color: #000000;
+    background-color: #ffc444;
 }
 #viewport{
     width: 100%;
     height: 100vh;
-    background: #000000;
+    background: #ffc444;
 }
 .perspective{
     width: 100%;
@@ -39,7 +40,12 @@ body{
 button{
     font-family: 'Montserrat', sans-serif;
 }
-
+.tomato{
+    color: rgb(241, 82, 8);
+}
+.orange{
+    color: #ffa500;
+}
 /* header start*/
 .wrapper header{
     position: absolute;
@@ -86,10 +92,10 @@ header .nav_button::after{
     width: 23px;
     top: 5px;
 }
-header .hireus-btn{
+header .more-btn{
     position: absolute;
     border: none;
-    background: #0e34b3;
+    background: #ff7300;
     color: #ffffff;
     font-size: 14px;
     font-weight: bold;
@@ -100,12 +106,11 @@ header .hireus-btn{
     cursor: pointer;
     left: 50%;
     transform: translateX(-50%);
-<<<<<<< HEAD
     transition: all 0.3s;
-=======
->>>>>>> 6541670358a86980d2a8bb6ef3c6edc3c3b1272b
+    font-family: 'Do Hyeon', sans-serif;
+    letter-spacing: 2px;
 }
-header .hireus-btn.isActive{
+header .more-btn.isActive{
     visibility: visible;
     opacity: 1;
 }
@@ -120,6 +125,7 @@ header .hireus-btn.isActive{
     align-items: center;
     height: 100%;
     z-index: 99;
+    font-family: 'Do Hyeon', sans-serif;
 }
 .slide-nav::before{
     position: absolute;
@@ -142,7 +148,7 @@ header .hireus-btn.isActive{
 .slide-ul li{
     position: relative;
     top: -5px;
-    left: 6px;
+    left: 5px;
     color: #ffffff;
     cursor: pointer;
 }
@@ -184,7 +190,7 @@ header .hireus-btn.isActive{
     transition: all 0.5s;
 }
 .slide-ul li.slide-active::marker{
-    color: rgb(34, 34, 179);
+    color: #ff7300;
     transition-delay: 0.3s;
 }
 .slide-ul li.slide-active::before{
@@ -233,12 +239,35 @@ header .hireus-btn.isActive{
 .intro--banner{
     position: relative;
     height: 475px;
+    font-family: 'Do Hyeon', sans-serif;
 }
 .intro--banner h1{
     font-size: 68px;
     color: #ffffff;
     font-weight: bold;
     margin: 68px 0;
+}
+.intro--banner .intro--name{
+    position: relative;
+}
+.intro--banner .intro--name em{
+    opacity: 0;
+    transition: all 0.5s;
+}
+.intro--banner .intro--name:hover em{
+    opacity: 1;
+}
+.intro--banner .intro--name::after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 5px;
+    background: #ff7300;
+    opacity: 1;
 }
 .intro--banner button{
     position: relative;
@@ -249,6 +278,8 @@ header .hireus-btn.isActive{
     font-weight: bold;
     border: none;
     cursor: pointer;
+    font-family: 'Do Hyeon', sans-serif;
+    letter-spacing: 2px;
 }
 .intro--banner button i{
     margin-left: 10px;
@@ -259,20 +290,19 @@ header .hireus-btn.isActive{
     right: -3px;
     width: 80%;
     height: 100%;
-    background-color: blue;
+    background-color: #ff7300;
     z-index: -1;
     transition: all 0.3s;
 }
 .intro--banner button:hover span{
     width: 100%;
-    background: blue;
 }
 .intro--banner img{
     position: absolute;
     bottom: 23px;
     right: -13px;
 }
-.intro--banner::before{
+/* .intro--banner::before{
     position: absolute;
     left: 0;
     bottom: 23px;
@@ -281,10 +311,19 @@ header .hireus-btn.isActive{
     height: 3px;
     background: #555555;
     opacity: 0.5;
-}
+} */
 .intro--option{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    font-family: 'Do Hyeon', sans-serif;
+    background: rgba(255, 255, 255, 0.3);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    border-top: 5px solid #ff7300;
+    box-sizing: border-box;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
+    padding: 15px;
 }
 .intro--option a{
     max-width: 250px;
@@ -294,14 +333,15 @@ header .hireus-btn.isActive{
     transition: all 0.5s;
 }
 .intro--option a:hover{
-    color: #ffffff;
+    
     opacity: 1;
 }
 .intro--option a h3{
-    margin: 20px 0;
+    margin: 5px 0 20px;
 }
 .intro--option a p{
     font-size: 14px;
+    line-height: 20px;
 }
 /* main-content end */
 
@@ -317,8 +357,10 @@ header .hireus-btn.isActive{
     transform: translateY(-50%);
     color: #ffffff;
     font-size: 55px;
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Do Hyeon', sans-serif;
     font-weight: bold;
+    opacity: 0;
+    transition: all 0.5s;
 }
 .out-li{
     position: relative;
@@ -331,14 +373,15 @@ header .hireus-btn.isActive{
     content: "";
     position: absolute;
     left: 0;
-    bottom: 10px;
+    bottom: 0;
     width: 100%;
     height: 10px;
-    background: blue;
+    background: #ff7300;
     z-index: -1;
 }
 .out-nav.is-vis{
     visibility: visible;
+    opacity: 1;
 }
 /* out-nav end */
 
@@ -346,7 +389,7 @@ header .hireus-btn.isActive{
 .effect-rotate .container{
     left: 20%;
     transform: translateZ(-1800px) translateX(-50%) rotateY(45deg);
-    border: 10px solid blue;
+    box-shadow: -15px 10px 50px #ff7300;   
     cursor: pointer;
 }
 /* effect-rotate-left end*/
@@ -362,6 +405,7 @@ header .hireus-btn.isActive{
     width: 100%;
     height: 100%;
     margin: 0 auto;
+    font-family: 'Do Hyeon', sans-serif;
 }
 .work > h2{
     width: 100%;
@@ -406,23 +450,36 @@ header .hireus-btn.isActive{
 .slider.right .slider--description{
     display: none;
 }
+.slider .slider--title{
+    margin: 15px 0 10px;
+}
+.slider.center .slider--title{
+    margin: 25px 0 15px;
+    font-size: 20px;
+}
 .slider--description{
-    font-size: 14px;
+    font-size: 16px;
     max-width: 260px;
     margin: 0 auto;
 }
 .slider a{
     display: block;
     font-weight: bold;
+    color: #252525;
 }
 .slider a img{
     width: 100%;
+    min-width: 150px;
+    min-height: 150px;
+    border-radius: 100%;
+    box-shadow: -3px -3px 15px rgba(41, 41, 41, 0.2),
+    3px 3px 7px rgba(226, 198, 132, 0.2);
+    padding: 20px;
+    box-sizing: border-box;
+    object-fit: cover;
 }
-.slider a .slider--title{
-    margin: 15px 0 10px;
-}
-.slider.center a .slider--title{
-    margin: 25px 0 15px;
+.slider.center a img{
+    height: 300px;
 }
 .work .btn{
     position: absolute;
@@ -451,37 +508,48 @@ header .hireus-btn.isActive{
     width: 100%;
     height: 100%;
     margin: 0 auto;
+    font-family: 'Do Hyeon', sans-serif;
 }
 .about--banner{
     position: relative;
     width: 100%;
-    height: 475px;
+    height: 420px;
 }
 .about--banner h2{
     position: relative;
     margin: 50px 0;
     color: #ffffff;
-    font-size: 68px;
+    font-size: 60px;
     font-weight: bold;
+}
+.about--banner h2 > span{
+    font-size: 60px;
 }
 .about--banner h2::before{
     content: "";
     position: absolute;
-    top: 67px;
-    left: 112px;
-    width: 18px;
+    top: 34%;
+    right: 57%;
+    width: 170px;
     height: 18px;
     border-radius: 18px;
-    background: blue;
+    background: #ff8b1f;
+    transform: rotate(160deg);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    z-index: -1;
 }
 .about--banner h2::after{
     content: "";
     position: absolute;
-    left: 252px;
-    bottom: 0;
-    width: 12px;
-    height: 12px;
-    background: blue;
+    left: 0;
+    bottom: 35%;
+    width: 200px;
+    height: 20px;
+    border-radius: 18px;
+    background: #ff8b1f;
+    transform: rotate(10deg);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    z-index: -1;
 }
 .about--banner a{
     display: inline-flex;
@@ -498,9 +566,12 @@ header .hireus-btn.isActive{
     margin-left: 20px;
 }
 .about--banner img{
+    width: 100%;
+    max-width: 450px;
     position: absolute;
     right: 0;
-    bottom: -55px;
+    bottom: 30px;
+    z-index: -1;
 }
 .about--option{
     display: flex;
@@ -513,20 +584,26 @@ header .hireus-btn.isActive{
     align-items: flex-end;
     width: 175px;
     height: 95px;
-    border: 10px solid blue;
+    border: 10px solid #ffc444;
     box-sizing: border-box;
+    box-shadow: 
+    -5px -5px 10px rgba(255, 255, 255, 0.2),
+    5px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
 }
 .about--option a:nth-child(1){
-    background: url(images/about-winners.png) no-repeat;
+    background: url(images/velog_logo.png) no-repeat;
     background-size: cover;
 }
 .about--option a:nth-child(2){
-    background: url(images/about-philosophy.png) no-repeat;
+    background: url(images/github_logo.png) no-repeat;
     background-size: cover;
 }
 .about--option a:nth-child(3){
-    background: url(images/about-history.png) no-repeat;
-    background-size: cover;
+    background: url(images/work_logo.png) no-repeat;
+    background-size: 80%;
+    background-position: center;
+    background-color: #2a2a2a;
 }
 .about--option a h3{
     position: absolute;
@@ -544,38 +621,98 @@ header .hireus-btn.isActive{
 
 /* contact start */
 .contact{
-    position: fixed;
-    top: 0;
-    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     width: 100%;
     height: 100%;
-    background: url(images/contact-visual.png) no-repeat;
-    background-position: center;
+    font-family: 'Do Hyeon', sans-serif;
+    perspective: 1500px;
+}
+/* .contact::before{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    content: "";
+    background: url(images/contact-visual1.png);
     background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 930px;
+    display: block;
+    opacity: 0.3;
+    z-index: -1;
+} */
+.contact h2{
+    font-size: 40px;
+    color: #ffffff;
+    margin-bottom: 25px;
 }
 .contact--inner{
+    position: relative;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     max-width: 900px;
     width: 100%;
     height: 100%;
+    max-height: 450px;
     margin: 0 auto;
 }
+.contact--inner > img{
+    width: 100%;
+    max-width: 500px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
 .contact--info{
+    position: relative;
     display: flex;
+    width: 100%;
+    max-width: 250px;
     flex-direction: column;
     text-align: center;
     padding: 45px;
-    color: #ffffff;
+    color: #555555;
     font-weight: bold;
-    background: #000000;
+    overflow: hidden;
+    background: #ffc444;
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.2),
+    5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.contact--info::before{
+    content: "";
+    position: absolute;
+    right: -10%;
+    top: -40%;
+    width: 120%;
+    height: 120%;
+    background: #ff7300;
+    border-radius: 100%;
+    z-index: 1;
+    transition: all 0.8s;
+}
+.contact--info:hover::before{
+    top: 0;
+    height: 400%;
+    transform: rotate(45deg);
 }
 .contact--info p{
     margin-bottom: 15px;
 }
-.contact--info > a{
+.contact--info div{
+    position: relative;
+    z-index: 2;
+}
+.contact--info div > a{
+    display: block;
     margin-bottom: 15px;
+    color: #555555;
 }
 .contact--info ul{
     display: flex;
@@ -612,32 +749,35 @@ header .hireus-btn.isActive{
     width: 100%;
     height: 100%;
     margin: 0 auto;
+    font-family: 'Do Hyeon', sans-serif;
 }
 .hire h2{
     color: #ffffff;
-    font-size: 30px;
+    font-size: 35px;
+    letter-spacing: 2px;
     font-weight: bold;
     text-align: center;
     margin-bottom: 40px;
 }
-.hire--inner{
+#hire--inner{
     width: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
-.hire--inner input[type="checkbox"]{
+#hire--inner input[type="checkbox"]{
     display: none;
 }
-.hire--inner span{
+#hire--inner span{
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
-.hire--inner span.hire--optionB{
+#hire--inner span.hire--optionB{
     width: 504px;
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 0 auto;
 }
-.hire--inner span label{
+#hire--inner span label{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -650,8 +790,8 @@ header .hireus-btn.isActive{
     transition: all 0.3s;
     cursor: pointer;
 }
-.hire--inner input[type="checkbox"]:checked + label{
-    background: #0e34b3;
+#hire--inner input[type="checkbox"]:checked + label{
+    background: #ff7300;
 }
 .hire--info{
     display: flex;
@@ -696,7 +836,7 @@ input[type="submit"]{
     width: 100%;
     height: 52px;
     margin: 0 auto;
-    background: #0e34b3;
+    background: #ff7300;
     color: #ffffff;
     font-weight: bold;
     font-size: 20px;
@@ -734,11 +874,9 @@ input[type="submit"]{
     .work-slider{
         height: auto;
     }
-    .slider{
-        width: 120px;
-    }
-    .slider.center{
+    .slider.center a img{
         width: 200px;
+        height: 200px;
     }
 }
 @media (max-width:840px){
@@ -748,24 +886,31 @@ input[type="submit"]{
     .intro--option a{
         display: block;
         max-width: 100%;
+        margin-bottom: 10px;
+    }
+    .intro--option a:last-child{
+        margin-bottom: 0;
+    }
+    .intro--option a h3{
+        margin: 5px 0;
+    }
+    .intro--option a p br{
+        display: none;
     }
 
     .about--banner h2{
         font-size: 45px;
     }
     .about--banner h2::before{
-        top: 45px;
-        left: 74px;
-        width: 12px;
-        height: 12px;
+        opacity: 0;
     }
     .about--banner h2::after{
-        left: 165px;
+        opacity: 0;
     }
 }
 @media (max-width:756px){
     .intro--banner{
-        height: 330px;
+        height: 315px;
     }
     .intro--banner h1{
         margin: 30px 0;
@@ -774,40 +919,45 @@ input[type="submit"]{
         width: 330px;
     }
 
-    .hire--inner > div{
+    #hire--inner > div{
         display: flex;
     }
-    .hire--inner span{
+    #hire--inner span{
         display: block;
     }
-    .hire--inner span.hire--optionB{
+    #hire--inner span.hire--optionB{
         width: 100%;
     }
-    .hire--inner span label{
+    #hire--inner span label{
         margin: 0 auto 40px;
         width: 90%;
     }
 }
 @media (max-width:650px){
-<<<<<<< HEAD
-    header .hireus-btn.isActive{
+    .perspective{
+        opacity: 1;
+        transition: all 0.5s;
+    }
+
+    header .more-btn.isActive{
         visibility: hidden;
         opacity: 0;
     }
 
-=======
->>>>>>> 6541670358a86980d2a8bb6ef3c6edc3c3b1272b
-    .effect-rotate{
-        perspective: none;
-    }
     .effect-rotate .container{
-        display: none;
+        transform: none;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
     }
-    .out-nav.is-vis{
+
+    .out-nav{
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
     }
-
+    .intro--option a{
+        opacity: 1;
+    }
     .intro--banner img{
         display: none;
     }
@@ -818,10 +968,49 @@ input[type="submit"]{
         display: none;
     }
 
+    .about--banner{
+        height: auto;
+    }
+    .about--banner h2{
+        text-align: center;
+        margin: 20px 0;
+    }
+    .about--banner h2 > span{
+        font-size: 55px;
+    }
     .about--banner img{
         display: none;
     }
-    .about--option{
-        display: none;
+    .about--banner > a{
+        display: flex;
+        justify-content: center;
     }
+
+    .about--option{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .about--option a{
+        width: 80%;
+        margin-bottom: 25px;
+    }
+    .about--option a:nth-child(1){
+        background-size: contain;
+        background-position: center;
+        background-color: #20c997;
+    }
+    .about--option a:nth-child(2){
+        background-size: contain;
+        background-position: center;
+        background-color: #ffffff;
+    }
+
+   .contact--info{
+       perspective: none;
+   }
+   .contact--inner > img{
+       display: none;
+   }
 }

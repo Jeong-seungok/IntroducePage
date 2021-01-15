@@ -1,23 +1,24 @@
 window.onload = function(){
-    const navButton = document.querySelector('.nav_button');
-    const perspectiveEl = document.querySelector('.perspective');
-    const outNav = document.querySelector('.out-nav');
-    const outNavLiEls = outNav.querySelectorAll('li');
-    const slideUlEl = document.querySelector('.slide-ul');
-    const slideLiEls = slideUlEl.querySelectorAll('li');
-    const mainContentEl = document.querySelector('.main-content');
-    const sectionEls = mainContentEl.querySelectorAll('.section');
-    const containerEl = document.querySelector('.container');
-    const infoTextEl = document.querySelectorAll('.info--text');
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
-    const sliderEls = document.querySelectorAll('.slider');
-<<<<<<< HEAD
-    const hireusBtn = document.querySelector('.hireus-btn');
-=======
->>>>>>> 6541670358a86980d2a8bb6ef3c6edc3c3b1272b
+    const navButton = document.querySelector('.nav_button')
+    ,perspectiveEl = document.querySelector('.perspective')
+    ,outNav = document.querySelector('.out-nav')
+    ,outNavLiEls = outNav.querySelectorAll('li')
+    ,slideUlEl = document.querySelector('.slide-ul')
+    ,slideLiEls = slideUlEl.querySelectorAll('li')
+    ,mainContentEl = document.querySelector('.main-content')
+    ,sectionEls = mainContentEl.querySelectorAll('.section')
+    ,containerEl = document.querySelector('.container')
+    ,infoTextEl = document.querySelectorAll('.info--text')
+    ,prevBtn = document.querySelector('.prev')
+    ,nextBtn = document.querySelector('.next')
+    ,sliderEls = document.querySelectorAll('.slider')
+    ,moreBtnEls = document.querySelectorAll('.more-btn')
+    ,hireInnerFromEl = document.querySelector('#hire--inner'),
+    contactEl = document.querySelector('.contact'),
+    contactInnerEl = contactEl.querySelector('.contact--inner'),
+    contactInfoEl = contactInnerEl.querySelector('.contact--info');
     let nowIndex = 0;
-
+    
     /* Click Event start */
     const openNav = () => {
         perspectiveEl.classList.add('effect-rotate');
@@ -36,16 +37,19 @@ window.onload = function(){
                     outNav.classList.remove('is-vis');
                     perspectiveEl.classList.remove('effect-rotate');
                     if(nowIndex === 0 || nowIndex === 4)
-                        hireusBtn.classList.remove('isActive');
+                        moreBtnEls[0].classList.remove('isActive');
                     else
-                        hireusBtn.classList.add('isActive');
+                        moreBtnEls[0].classList.add('isActive');
                 }
+                perspectiveEl.classList.remove('invisible');
             })
         }
         else
             return false;
     }
     const changeViewPort = (e) => {
+        if(document.body.offsetWidth<=650)
+            return false;
         if(!perspectiveEl.classList.contains('effect-rotate'))
             return false;
         else if(perspectiveEl.classList.contains('effect-rotate')){
@@ -68,17 +72,16 @@ window.onload = function(){
                     toggleSection();
                     toggleOutNav();
                     if(nowIndex === 0 || nowIndex === 4)
-                        hireusBtn.classList.remove('isActive');
+                        moreBtnEls[0].classList.remove('isActive');
                     else
-                        hireusBtn.classList.add('isActive');
+                        moreBtnEls[0].classList.add('isActive');
                 }
             })
         }
         else
             return false;
     }
-<<<<<<< HEAD
-    const changeToHire = (e) => {
+    const changeToMore = (e) => {
         nowIndex = 4;
         slideLiEls.forEach((value,idx)=>{
             value.classList.remove('slide-active');
@@ -86,12 +89,10 @@ window.onload = function(){
                 value.classList.add('slide-active');
                 toggleSection();
                 toggleOutNav();
-                hireusBtn.classList.remove('isActive');
+                    moreBtnEls[0].classList.remove('isActive');
             }
         })
     }
-=======
->>>>>>> 6541670358a86980d2a8bb6ef3c6edc3c3b1272b
     const directionClassName = ['left','center','right'];
     const fadeBack = () => {
         const popDirection = directionClassName.shift();
@@ -143,11 +144,43 @@ window.onload = function(){
     slideUlEl.addEventListener('click',changeSlide);
     prevBtn.addEventListener('click',fadeBack);
     nextBtn.addEventListener('click',fadeFront);
-<<<<<<< HEAD
-    hireusBtn.addEventListener('click',changeToHire);
+    moreBtnEls.forEach((moreBtn,idx)=>{
+        moreBtn.addEventListener('click',changeToMore);
+    })
+    hireInnerFromEl.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        alert('게시판 기능은 2주차에 추가하겠습니다 🥊');
+    })
     /* Click Event end */
     infoTextEl.forEach(input=>{input.addEventListener('blur', toggleInfoValue);})
-
+    let check = false;
+    contactEl.addEventListener('mousemove',(e)=>{
+        if(document.body.offsetWidth<=650)
+            return false;
+        if(check){
+            return false;
+        }
+        let xAxis = (window.innerWidth/2 - e.pageX)/15;
+        let yAxis = (window.innerHeight/2 - e.pageY)/15;
+        
+        contactInnerEl.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    })
+    contactEl.addEventListener('mouseleave',(e)=>{
+        if(document.body.offsetWidth<=650)
+            return false;
+        contactInnerEl.style.transform = `rotateY(0deg) rotateX(0deg)`;
+    })
+    contactInfoEl.addEventListener('mousemove',(e)=>{
+        if(document.body.offsetWidth<=650)
+            return false;
+        check = true;
+        contactInnerEl.style.transform = `rotateY(0deg) rotateX(0deg)`;
+    })
+    contactInfoEl.addEventListener('mouseout',(e)=>{
+        if(document.body.offsetWidth<=650)
+            return false;
+        check = false;
+    })
     window.addEventListener('keyup',(e)=>{
         if(e.key === 'ArrowDown'){
             ++nowIndex;
@@ -156,6 +189,10 @@ window.onload = function(){
             toggleSlide();
             toggleSection();
             toggleOutNav();
+            if(nowIndex === 0 || nowIndex === 4)
+                moreBtnEls[0].classList.remove('isActive');
+            else
+                moreBtnEls[0].classList.add('isActive');
         }
         else if(e.key === 'ArrowUp'){
             --nowIndex;
@@ -164,10 +201,10 @@ window.onload = function(){
             toggleSlide();
             toggleSection();
             toggleOutNav();
+            if(nowIndex === 0 || nowIndex === 4)
+                moreBtnEls[0].classList.remove('isActive');
+            else
+                moreBtnEls[0].classList.add('isActive');
         }
     })
-=======
-    /* Click Event end */
-    infoTextEl.forEach(input=>{input.addEventListener('blur', toggleInfoValue);})
->>>>>>> 6541670358a86980d2a8bb6ef3c6edc3c3b1272b
 }
