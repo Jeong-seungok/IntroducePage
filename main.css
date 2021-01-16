@@ -934,8 +934,6 @@ input[type="submit"]{
 }
 @media (max-width:720px){
     .perspective{
-        opacity: 1;
-        transition: all 0.5s;
         overflow: initial;
     }
     #viewport,.intro,.work,.about,.contact,.hire,
@@ -964,6 +962,9 @@ input[type="submit"]{
     .out-nav{
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
+    }
+    .out-nav.is-vis{
+        transition-delay: 0.3s;
     }
 
     .intro--banner{
@@ -1040,4 +1041,7 @@ input[type="submit"]{
        display: none;
    }
 
+   .effect-rotate .container{
+       box-shadow: initial;
+   }
 }
