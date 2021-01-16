@@ -933,13 +933,23 @@ input[type="submit"]{
         width: 90%;
     }
 }
-@media (max-width:650px){
+@media (max-width:720px){
     .perspective{
         opacity: 1;
         transition: all 0.5s;
-        overflow: scroll;
+        overflow: initial;
+    }
+    #viewport,.intro,.work,.about,.contact,.hire,
+    .main-content{
+        height: initial;
+    }
+    .intro,.work,.about,.contact,.hire{
+        margin-top: 30px;
     }
 
+    .wrapper header{
+        position: initial;
+    }
     header .more-btn.isActive{
         visibility: hidden;
         opacity: 0;
@@ -956,12 +966,21 @@ input[type="submit"]{
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
     }
-    .intro--option a{
-        opacity: 1;
+
+    .intro--banner{
+        height: initial;
+        margin-bottom: 30px;
+    }
+    .intro--banner h1{
+        margin: 0 0 30px;
     }
     .intro--banner img{
         display: none;
     }
+    .intro--option a{
+        opacity: 1;
+    }
+
     .work-slider{
         justify-content: center;
     }
@@ -969,19 +988,16 @@ input[type="submit"]{
         display: none;
     }
 
-
-    .about{
-        margin-top: 10%;
-    }
     .about--banner{
         height: auto;
     }
     .about--banner h2{
         text-align: center;
-        margin: 20px 0;
+        margin: 0 0 20px;
+        font-size: max(35px,8vw);
     }
     .about--banner h2 > span{
-        font-size: 55px;
+        font-size: max(40px,9vw);
     }
     .about--banner img{
         display: none;
@@ -990,7 +1006,6 @@ input[type="submit"]{
         display: flex;
         justify-content: center;
     }
-
     .about--option{
         flex-direction: column;
         align-items: center;
@@ -1012,10 +1027,18 @@ input[type="submit"]{
         background-color: #ffffff;
     }
 
+    .contact h2{
+        font-size: max(15px,5vw);
+        margin-bottom: 30px;
+    }
    .contact--info{
        perspective: none;
+   }
+   .contact--inner{
+       height: auto;
    }
    .contact--inner > img{
        display: none;
    }
+
 }
