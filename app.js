@@ -1,23 +1,31 @@
 window.onload = function(){
-    const navButton = document.querySelector('.nav_button')
-    ,perspectiveEl = document.querySelector('.perspective')
-    ,outNav = document.querySelector('.out-nav')
-    ,outNavLiEls = outNav.querySelectorAll('li')
-    ,slideUlEl = document.querySelector('.slide-ul')
-    ,slideLiEls = slideUlEl.querySelectorAll('li')
-    ,mainContentEl = document.querySelector('.main-content')
-    ,sectionEls = mainContentEl.querySelectorAll('.section')
-    ,containerEl = document.querySelector('.container')
-    ,infoTextEl = document.querySelectorAll('.info--text')
-    ,prevBtn = document.querySelector('.prev')
-    ,nextBtn = document.querySelector('.next')
-    ,sliderEls = document.querySelectorAll('.slider')
-    ,moreBtnEls = document.querySelectorAll('.more-btn')
-    ,hireInnerFromEl = document.querySelector('#hire--inner'),
+    /* Element start */
+    const navButton = document.querySelector('.nav_button'),
+    perspectiveEl = document.querySelector('.perspective'),
+    outNav = document.querySelector('.out-nav'),
+    outNavLiEls = outNav.querySelectorAll('li'),
+    slideUlEl = document.querySelector('.slide-ul'),
+    slideLiEls = slideUlEl.querySelectorAll('li'),
+    mainContentEl = document.querySelector('.main-content'),
+    sectionEls = mainContentEl.querySelectorAll('.section'),
+    containerEl = document.querySelector('.container'),
+    infoTextEl = document.querySelectorAll('.info--text'),
+    prevBtn = document.querySelector('.prev'),
+    nextBtn = document.querySelector('.next'),
+    sliderEls = document.querySelectorAll('.slider'),
+    moreBtnEls = document.querySelectorAll('.more-btn'),
+    hireInnerFromEl = document.querySelector('#hire--inner'),
     contactEl = document.querySelector('.contact'),
     contactInnerEl = contactEl.querySelector('.contact--inner'),
     contactInfoEl = contactInnerEl.querySelector('.contact--info');
+    /* Element end */
+
+    /* Default Value start */
+    const lastNav = slideLiEls.length - 1,
+    directionClassName = ['left','center','right'];
     let nowIndex = 0; 
+    let cursorOnInfo = false;
+    /* Default Value end */
     
     /* Click Event start */
     const openNav = () => {
@@ -34,20 +42,18 @@ window.onload = function(){
                     nowIndex = idx;
                     toggleSlide();
                     toggleSection();
+                    toggleMoreBtn();
                     outNav.classList.remove('is-vis');
                     perspectiveEl.classList.remove('effect-rotate');
-                    if(nowIndex === 0 || nowIndex === 4)
-                        moreBtnEls[0].classList.remove('isActive');
-                    else
-                        moreBtnEls[0].classList.add('isActive');
                 }
-                perspectiveEl.classList.remove('invisible');
-            })
+            });
         }
         else
             return false;
     }
     const changeViewPort = (e) => {
+        // 모바일 + rotate 효과전 perspectiveEl 클릭 방지
+        // Nav버튼 이벤트 중복 방지(effect-rotate 삭제 방지)
         if(document.body.offsetWidth<=650)
             return false;
         if(!perspectiveEl.classList.contains('effect-rotate'))
@@ -71,44 +77,34 @@ window.onload = function(){
                     value.classList.add('slide-active');
                     toggleSection();
                     toggleOutNav();
-                    if(nowIndex === 0 || nowIndex === 4)
-                        moreBtnEls[0].classList.remove('isActive');
-                    else
-                        moreBtnEls[0].classList.add('isActive');
+                    toggleMoreBtn();
                 }
             })
         }
         else
             return false;
     }
-    const changeToMore = (e) => {
-        nowIndex = 4;
+    const changeToMore = () => {
+        nowIndex = lastNav;
         slideLiEls.forEach((value,idx)=>{
             value.classList.remove('slide-active');
             if(idx === nowIndex){
                 value.classList.add('slide-active');
                 toggleSection();
                 toggleOutNav();
-                    moreBtnEls[0].classList.remove('isActive');
+                toggleMoreBtn();
             }
         })
     }
-    const directionClassName = ['left','center','right'];
     const fadeBack = () => {
         const popDirection = directionClassName.shift();
         directionClassName.push(popDirection);
-        sliderEls.forEach((el,idx)=>{
-            el.classList.remove(el.classList[1]);
-            el.classList.add(directionClassName[idx]);
-        })
+        changeDirection();
     }
     const fadeFront = () => {
         const popDirection = directionClassName.pop();
         directionClassName.unshift(popDirection);
-        sliderEls.forEach((el,idx)=>{
-            el.classList.remove(el.classList[1]);
-            el.classList.add(directionClassName[idx]);
-        })
+        changeDirection();
     }
     const toggleSlide = () =>{
         slideLiEls.forEach((value,idx)=>{
@@ -132,11 +128,24 @@ window.onload = function(){
         })
     }
     const toggleInfoValue = (e)=> {
-        if(e.target.value !== '')
-            e.target.classList.add('has-value');
+        const inputEl = e.target
+        if(inputEl.value !== '')
+            inputEl.classList.add('has-value');
         else
-            e.target.classList.remove('has-value');
+            inputEl.classList.remove('has-value');
     };
+    const toggleMoreBtn = () => {
+        if(nowIndex === 0 || nowIndex === lastNav)
+            moreBtnEls[0].classList.remove('isActive');
+        else
+            moreBtnEls[0].classList.add('isActive');
+    }
+    const changeDirection = () => {
+        sliderEls.forEach((el,idx)=>{
+            el.classList.remove(el.classList[1]);
+            el.classList.add(directionClassName[idx]);
+        })
+    }
 
     navButton.addEventListener('click', openNav);
     outNav.addEventListener('click',changeNav);
@@ -144,67 +153,72 @@ window.onload = function(){
     slideUlEl.addEventListener('click',changeSlide);
     prevBtn.addEventListener('click',fadeBack);
     nextBtn.addEventListener('click',fadeFront);
-    moreBtnEls.forEach((moreBtn,idx)=>{
+    moreBtnEls.forEach((moreBtn)=>{
         moreBtn.addEventListener('click',changeToMore);
     })
+    /* Click Event end */
+    
+    /* Submit Event start */
     hireInnerFromEl.addEventListener('submit',(e)=>{
         e.preventDefault();
         alert('게시판 기능은 2주차에 추가하겠습니다 🥊');
-    })
-    /* Click Event end */
-    infoTextEl.forEach(input=>{input.addEventListener('blur', toggleInfoValue);})
-    let check = false;
+    });
+    /* Submit Event end */
+
+    /* Blur Event start */
+    infoTextEl.forEach(input=>{input.addEventListener('blur', toggleInfoValue);});
+    /* Blur Event end */
+
+    /* mouse Event start */
+    const resetRotate = () => {
+        if(document.body.offsetWidth<=650)
+            return false;
+        contactInnerEl.style.transform = `rotateY(0deg) rotateX(0deg)`;
+    }
     contactEl.addEventListener('mousemove',(e)=>{
         if(document.body.offsetWidth<=650)
             return false;
-        if(check){
+        if(cursorOnInfo)
             return false;
-        }
         let xAxis = (window.innerWidth/2 - e.pageX)/15;
         let yAxis = (window.innerHeight/2 - e.pageY)/15;
         
         contactInnerEl.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-    })
+    });
     contactEl.addEventListener('mouseleave',(e)=>{
-        if(document.body.offsetWidth<=650)
-            return false;
-        contactInnerEl.style.transform = `rotateY(0deg) rotateX(0deg)`;
-    })
+        resetRotate();
+    });
     contactInfoEl.addEventListener('mousemove',(e)=>{
+        resetRotate();
+        cursorOnInfo = true;
+    });
+    contactInfoEl.addEventListener('mouseleave',(e)=>{
         if(document.body.offsetWidth<=650)
             return false;
-        check = true;
-        contactInnerEl.style.transform = `rotateY(0deg) rotateX(0deg)`;
-    })
-    contactInfoEl.addEventListener('mouseout',(e)=>{
-        if(document.body.offsetWidth<=650)
-            return false;
-        check = false;
-    })
-    window.addEventListener('keyup',(e)=>{
+        cursorOnInfo = false;
+    });
+    /* mouse Event end */
+
+    /* key Event start */
+    document.addEventListener('keyup',(e)=>{
         if(e.key === 'ArrowDown'){
             ++nowIndex;
-            if(nowIndex>4)
+            if(nowIndex > lastNav)
                 nowIndex = 0;
             toggleSlide();
             toggleSection();
             toggleOutNav();
-            if(nowIndex === 0 || nowIndex === 4)
-                moreBtnEls[0].classList.remove('isActive');
-            else
-                moreBtnEls[0].classList.add('isActive');
+            toggleMoreBtn();
         }
         else if(e.key === 'ArrowUp'){
             --nowIndex;
             if(nowIndex<0)
-                nowIndex = 4;
+                nowIndex = lastNav;
             toggleSlide();
             toggleSection();
             toggleOutNav();
-            if(nowIndex === 0 || nowIndex === 4)
-                moreBtnEls[0].classList.remove('isActive');
-            else
-                moreBtnEls[0].classList.add('isActive');
+            toggleMoreBtn();
         }
-    })
+    });
+    /* key Event start */
 }
