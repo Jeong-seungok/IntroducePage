@@ -1,7 +1,8 @@
 window.onload = function(){
     /* Element start */
-    const navButton = document.querySelector('.nav_button'),
-    perspectiveEl = document.querySelector('.perspective'),
+    const perspectiveEl = document.querySelector('.perspective'),
+    wrapperEl = perspectiveEl.querySelector('.wrapper'),
+    navButton = document.querySelector('.nav_button'),
     outNav = document.querySelector('.out-nav'),
     outNavLiEls = outNav.querySelectorAll('li'),
     slideUlEl = document.querySelector('.slide-ul'),
@@ -17,7 +18,10 @@ window.onload = function(){
     hireInnerFromEl = document.querySelector('#hire--inner'),
     contactEl = document.querySelector('.contact'),
     contactInnerEl = contactEl.querySelector('.contact--inner'),
-    contactInfoEl = contactInnerEl.querySelector('.contact--info');
+    contactInfoEl = contactInnerEl.querySelector('.contact--info'),
+    ModeBtnEl = document.querySelector('.Mode--btn'),
+    faMoonEl = ModeBtnEl.querySelector('.fa-moon'),
+    logoEl = document.querySelector('.logo');
     /* Element end */
 
     /* Default Value start */
@@ -146,6 +150,10 @@ window.onload = function(){
             el.classList.add(directionClassName[idx]);
         })
     }
+    const changeMode = () => {
+        document.body.classList.toggle('dark');
+        ModeBtnEl.classList.toggle('dark');
+    }
 
     navButton.addEventListener('click', openNav);
     outNav.addEventListener('click',changeNav);
@@ -156,6 +164,7 @@ window.onload = function(){
     moreBtnEls.forEach((moreBtn)=>{
         moreBtn.addEventListener('click',changeToMore);
     })
+    ModeBtnEl.addEventListener('click', changeMode);
     /* Click Event end */
     
     /* Submit Event start */
@@ -221,4 +230,14 @@ window.onload = function(){
         }
     });
     /* key Event start */
+
+    /* Mobile Response start*/
+    window.addEventListener('resize', function(){
+        if(document.body.offsetWidth <= 365){
+            logoEl.children[1].innerText = 'Jeong';
+        }else{
+            logoEl.children[1].innerText = 'Jeong SeungOk';
+        }
+    })
+    /* Mobile Response end*/
 }
