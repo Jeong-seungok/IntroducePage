@@ -918,6 +918,10 @@ input[type="submit"]{
 
 /* Responsive */
 @media (max-width:1180px){
+    #viewport{
+        height: 100vmax;
+    }
+
     .slide-nav{
         display: none;
     }
@@ -929,9 +933,15 @@ input[type="submit"]{
     .contact--inner{
         justify-content: center;
     }
+    .contact--inner > img{
+        display: none;
+    }
 
     .changeMode{
-        right: 0;
+        top: 35px;
+        bottom: auto;
+        right: 80px;
+        transform: translateY(-50%);
     }
 }
 @media (max-width:900px){
@@ -1012,7 +1022,7 @@ input[type="submit"]{
     .perspective{
         overflow: initial;
     }
-    #viewport,.intro,.work,.about,.contact,.hire,
+    .intro,.work,.about,.contact,.hire,
     .main-content{
         height: initial;
     }
@@ -1020,7 +1030,7 @@ input[type="submit"]{
         margin-top: 30px;
     }
     .work, .contact{
-        margin-top: 100px;
+        margin-top: 45%;
     }
 
     .wrapper header{
@@ -1116,24 +1126,15 @@ input[type="submit"]{
    .contact--inner{
        height: auto;
    }
-   .contact--inner > img{
-       display: none;
-   }
 
    .effect-rotate .container{
        box-shadow: initial;
-   }
-
-   .changeMode{
-       bottom: 50%;
-       transform: translateY(50%);
-       right: 80px;
    }
 }
 
 @media (max-width:360px){
     .changeMode{
-        transform: translate(50%,50%);
+        transform: translate(50%,-50%);
         right: 50%;
     }
 }
