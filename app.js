@@ -20,7 +20,6 @@ window.onload = function(){
     contactInnerEl = contactEl.querySelector('.contact--inner'),
     contactInfoEl = contactInnerEl.querySelector('.contact--info'),
     ModeBtnEl = document.querySelector('.Mode--btn'),
-    faMoonEl = ModeBtnEl.querySelector('.fa-moon'),
     logoEl = document.querySelector('.logo');
     /* Element end */
 
