@@ -1016,8 +1016,11 @@ input[type="submit"]{
     .main-content{
         height: initial;
     }
-    .intro,.work,.about,.contact,.hire{
+    .intro,.about,.hire{
         margin-top: 30px;
+    }
+    .work, .contact{
+        margin-top: 150px;
     }
 
     .wrapper header{
