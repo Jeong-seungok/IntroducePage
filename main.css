@@ -885,7 +885,7 @@ input[type="submit"]{
     right: 25px;
     background: var(--background-color1);
     box-shadow: var(--box-shadow5);
-    z-index: 2;
+    z-index: 102;
 }
 .Mode--wrap{
     position: relative;
