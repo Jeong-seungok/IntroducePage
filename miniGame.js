@@ -196,7 +196,7 @@ finishBtn.addEventListener('click',()=>{
         player.score += score;
         score = 0;
     }
-    miniGameFinishEl.classList.remove('is-active');
+    miniGameFinishEl .classList.remove('is-active');
     setTimeout(()=>{
         reset();
         animate();
