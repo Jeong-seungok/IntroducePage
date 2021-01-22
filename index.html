@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" />
     <script src="https://kit.fontawesome.com/2f9ac1e29b.js" crossorigin="anonymous"></script>
-    <script src="app.js"></script>
 </head>
 <body>
     <div class="perspective">
@@ -19,7 +18,7 @@
             <div id="viewport">
                 <div class="wrapper">
                     <header>
-                        <a href="/" class="logo">
+                        <a href="index.html" class="logo">
                             <span>🌎</span>
                             <p>Jeong SeungOk</p>
                         </a>
@@ -34,11 +33,12 @@
                             <li class="slide"><span>관심사</span></li>
                             <li class="slide"><span>공부</span></li>
                             <li class="slide"><span>연락하기</span></li>
+                            <li class="slide"><span>미니게임</span></li>
                             <li class="slide"><span>질문하기</span></li>
                         </ul>
                     </nav>
                     <ul class="main-content">
-                        <li class="section section-active">
+                        <li class="section">
                             <div class="intro">
                                 <div class="intro--banner">
                                     <h1>안녕하세요<br/>제 이름은<br/><span class="intro--name tomato"><em>정승옥</em></span>입니다</h1>
@@ -147,9 +147,35 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="section section-active">
+                            <div class="miniGame">
+                                <h2>🎮 미니게임 🎮</h2>
+                                <div class="miniGame--wrap">
+                                    <div class="miniGame--info">
+                                        <span class="miniGame--point">Score: <em>0</em></span>
+                                        <span class="miniGame--stage">Stage: <em>1</em></span>
+                                    </div>
+                                    <span class="miniGame--start">Start</span>
+                                    <div class="miniGame--finish">
+                                        <div class="finish--info"></div>
+                                        <button class="finish--btn"></button>
+                                    </div>
+                                    <canvas class="miniGame--canvas"></canvas>
+                                    <div class="miniGame--modal">
+                                        <h2 class="modal--title"></h2>
+                                        <div class="modal--description"></div>
+                                        <div class="modal--close"><i class="far fa-times-circle"></i></div>
+                                    </div>
+                                </div>
+                                <div class="miniGame--button">
+                                    <div class="modal--info">?</div>
+                                    <div class="modal--rank">랭킹</div>
+                                </div>
+                            </div>
+                        </li>
                         <li class="section">
                             <div class="hire">
-                                <h2>💪같이 해결해봐요💪</h2>
+                                <h2>💪 같이 해결해봐요 💪</h2>
                                 <form id="hire--inner">
                                     <div>
                                         <span class="hire--optionA">
@@ -198,8 +224,11 @@
         <li class="out-li">관심사</li>
         <li class="out-li">공부</li>
         <li class="out-li">연락하기</li>
+        <li class="out-li">미니게임</li>
         <li class="out-li">질문하기</li>
     </ul>
     <script src="https://kit.fontawesome.com/2f9ac1e29b.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+    <script src="miniGame.js"></script>
 </body>
 </html>
