@@ -72,7 +72,7 @@ const projectiles = [];
 const enemies = [];
 let stage=1;
 
-function spawnEnemies(){
+const spawnEnemies = () => {
     const spawnTime = 3000 - (100 * stage) >= 1000 ? 3000 - (100 * stage) : 1000;
     setInterval(()=>{
         const radius = Math.random() * (30 - 20) + 20;
@@ -105,7 +105,7 @@ let rankList; // 랭킹을 담을 변수
 let requestId;
 let score = 0;
 
-function animate(){
+const animate = () => {
     requestId = window.requestAnimationFrame(animate);
     ctx.fillStyle = 'rgba(0,0,0,0.1)';
     ctx.fillRect(0, 0, miniGameCanvasEl.width, miniGameCanvasEl.height);
@@ -195,6 +195,7 @@ startBtnEl.addEventListener('click',()=>{
 // 다시 시작, 유저이름 입력
 finishBtn.addEventListener('click',()=>{
     const reset = () =>{
+        stage = 1;
         score = 0;
         ctx.clearRect(0,0,miniGameCanvasEl.width, miniGameCanvasEl.height);
         enemies.splice(0,enemies.length);
@@ -202,7 +203,7 @@ finishBtn.addEventListener('click',()=>{
         stageEl.innerText = stage;
         pointEl.innerText = score;
     }
-    player.score += score;
+    player.score = score;
     const inputEl = finishInfoEl.querySelector('input');
     const userDataObj = {
         name: inputEl.value,
@@ -272,11 +273,11 @@ modalCloseBtn.addEventListener('click',()=>{
 /* Modal end*/
 
 // 랭크 업데이트
-function setData(value){
+const setData = (value) => {
     localStorage.setItem('user',JSON.stringify(value));
 }
 // 초기 랭크 업데이트
-function initData(){
+const initData = () => {
     const userData = JSON.parse(localStorage.getItem('user'));
     const defaultData = [
     {

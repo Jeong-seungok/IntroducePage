@@ -891,6 +891,8 @@ header .more-btn.isActive{
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
+    visibility: visible;
+    opacity: 1;
 }
 .miniGame--button > div{
     width: 100px;
@@ -1135,6 +1137,20 @@ input[type="submit"]{
         display: none;
     }
 
+    .miniGame--canvas{
+        user-select: none;
+        background: var(--background-color1);
+    }
+    .miniGame--start{
+        visibility: hidden;
+        opacity: 0;
+        user-select: none;
+    }
+    .miniGame--button{
+        visibility: hidden;
+        opacity: 0;
+    }
+
     .changeMode{
         top: 35px;
         bottom: auto;
@@ -1220,14 +1236,14 @@ input[type="submit"]{
     .perspective{
         overflow: initial;
     }
-    .intro,.work,.about,.contact,.hire,
+    .intro,.work,.about,.contact,.hire,.miniGame,
     .main-content{
         height: initial;
     }
     .intro,.about,.hire{
         margin-top: 30px;
     }
-    .work, .contact{
+    .work, .contact, .miniGame{
         margin-top: 35%;
     }
 
@@ -1318,16 +1334,16 @@ input[type="submit"]{
         font-size: max(15px,5vw);
         margin-bottom: 30px;
     }
-   .contact--info{
+    .contact--info{
        perspective: none;
-   }
-   .contact--inner{
+    }
+    .contact--inner{
        height: auto;
-   }
+    }
 
-   .effect-rotate .container{
+    .effect-rotate .container{
        box-shadow: initial;
-   }
+    }
 }
 
 @media (max-width:360px){

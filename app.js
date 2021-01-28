@@ -54,7 +54,7 @@ const changeNav = (e) => {
         return false;
 }
 const changeViewPort = (e) => {
-    // 모바일 + rotate 효과전 perspectiveEl 클릭 방지
+    // 모바일 또는 rotate 효과전 perspectiveEl 클릭 방지
     // Nav버튼 이벤트 중복 방지(effect-rotate 삭제 방지)
     if(document.body.offsetWidth<=650)
         return false;
@@ -98,6 +98,40 @@ const changeToMore = () => {
         }
     })
 }
+const toggleSlide = () =>{
+    slideLiEls.forEach((value,idx)=>{
+        value.classList.remove('slide-active');
+        if(idx === nowIndex)
+        value.classList.add('slide-active');
+    })
+}
+const toggleSection = () => {
+    sectionEls.forEach((value,idx)=>{
+        value.classList.remove('section-active');
+        if(idx === nowIndex)
+        value.classList.add('section-active');
+    })
+}
+const toggleOutNav = () => {
+    outNavLiEls.forEach((value,idx)=>{
+        value.classList.remove('is-select');
+        if(idx === nowIndex)
+        value.classList.add('is-select');
+    })
+}
+const toggleInfoValue = (e)=> {
+    const inputEl = e.target
+    if(inputEl.value !== '')
+    inputEl.classList.add('has-value');
+    else
+    inputEl.classList.remove('has-value');
+};
+const toggleMoreBtn = () => {
+    if(nowIndex === 0 || nowIndex === lastNav)
+    moreBtnEls[0].classList.remove('isActive');
+    else
+    moreBtnEls[0].classList.add('isActive');
+}
 const fadeBack = () => {
     const popDirection = directionClassName.shift();
     directionClassName.push(popDirection);
@@ -107,40 +141,6 @@ const fadeFront = () => {
     const popDirection = directionClassName.pop();
     directionClassName.unshift(popDirection);
     changeDirection();
-}
-const toggleSlide = () =>{
-    slideLiEls.forEach((value,idx)=>{
-        value.classList.remove('slide-active');
-        if(idx === nowIndex)
-            value.classList.add('slide-active');
-    })
-}
-const toggleSection = () => {
-    sectionEls.forEach((value,idx)=>{
-        value.classList.remove('section-active');
-        if(idx === nowIndex)
-            value.classList.add('section-active');
-    })
-}
-const toggleOutNav = () => {
-    outNavLiEls.forEach((value,idx)=>{
-        value.classList.remove('is-select');
-        if(idx === nowIndex)
-            value.classList.add('is-select');
-    })
-}
-const toggleInfoValue = (e)=> {
-    const inputEl = e.target
-    if(inputEl.value !== '')
-        inputEl.classList.add('has-value');
-    else
-        inputEl.classList.remove('has-value');
-};
-const toggleMoreBtn = () => {
-    if(nowIndex === 0 || nowIndex === lastNav)
-        moreBtnEls[0].classList.remove('isActive');
-    else
-        moreBtnEls[0].classList.add('isActive');
 }
 const changeDirection = () => {
     sliderEls.forEach((el,idx)=>{
@@ -183,6 +183,7 @@ const resetRotate = () => {
     contactInnerEl.style.transform = `rotateY(0deg) rotateX(0deg)`;
 }
 contactEl.addEventListener('mousemove',(e)=>{
+    // 모바일 또는 contactInfoEl에 마우스가 올라갈 경우
     if(document.body.offsetWidth<=650)
         return false;
     if(cursorOnInfo)
@@ -192,14 +193,14 @@ contactEl.addEventListener('mousemove',(e)=>{
     
     contactInnerEl.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
 });
-contactEl.addEventListener('mouseleave',(e)=>{
+contactEl.addEventListener('mouseleave',()=>{
     resetRotate();
 });
-contactInfoEl.addEventListener('mousemove',(e)=>{
+contactInfoEl.addEventListener('mousemove',()=>{
     resetRotate();
     cursorOnInfo = true;
 });
-contactInfoEl.addEventListener('mouseleave',(e)=>{
+contactInfoEl.addEventListener('mouseleave',()=>{
     if(document.body.offsetWidth<=650)
         return false;
     cursorOnInfo = false;
@@ -230,11 +231,33 @@ document.addEventListener('keyup',(e)=>{
 /* key Event start */
 
 /* Mobile Response start*/
+const miniGameEl = document.querySelector('.miniGame');
+const miniGameTitle = miniGameEl.querySelector('h2');
+
+const initGameTitle = () => {
+    const documentWidth = document.body.offsetWidth;
+    if(documentWidth <= 1180)
+        miniGameTitle.innerText = '🔒 모바일 미지원';
+}
 window.addEventListener('resize', function(){
+    if(document.body.offsetWidth <= 1180){
+        if(miniGameTitle.innerText = '🎮 미니게임 🎮'){
+            miniGameTitle.innerText = '🔒 모바일 미지원';
+        }else{
+            return false;
+        }
+    }else if(document.body.offsetWidth > 1180){
+        if(miniGameTitle.innerText = '🔒 모바일 미지원'){
+            miniGameTitle.innerText = '🎮 미니게임 🎮';
+        }else{
+            return false;
+        }
+    }
     if(document.body.offsetWidth <= 365){
         logoEl.children[1].innerText = 'Jeong';
     }else{
         logoEl.children[1].innerText = 'Jeong SeungOk';
     }
 })
+initGameTitle();
 /* Mobile Response end*/
